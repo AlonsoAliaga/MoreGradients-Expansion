@@ -1,0 +1,6 @@
+### Maven template
+*.jar
+/target/
+/out/
+*.xml
+*.iml
