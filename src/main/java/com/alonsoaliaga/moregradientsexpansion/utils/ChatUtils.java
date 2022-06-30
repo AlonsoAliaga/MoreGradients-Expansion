@@ -103,7 +103,7 @@ public class ChatUtils {
             for (char c : text.toCharArray()) {
                 builder.append(colorToHex(gradient.next())).append(modifierString).append(c);
             }
-            Bukkit.getConsoleSender().sendMessage("§e[NO_CON] Parsing: '§r"+text+"§r§e' §7| §eColors: "+colors.stream().map(ChatUtils::colorToHex).collect(Collectors.joining(",")));
+            //Bukkit.getConsoleSender().sendMessage("§e[NO_CON] Parsing: '§r"+text+"§r§e' §7| §eColors: "+colors.stream().map(ChatUtils::colorToHex).collect(Collectors.joining(","))); //Debug for testing
             return builder.toString();
         }
         return text;
