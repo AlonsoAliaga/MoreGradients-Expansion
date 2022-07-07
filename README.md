@@ -88,7 +88,7 @@ The following placeholders are available:
 > **Output:** `&#833ab4I&#9236a1 &#a2338ea&#b12f7bm&#c02c69 &#cf2856A&#df2443l&#ee2130o&#fd1d1dn&#fd2f22s&#fd4227o&#fd542cA&#fd6731l&#fc7936i&#fc8b3ba&#fc9e40g&#fcb045a`
 
 ## Utils
-> ### %moregradients_colorize_YOUR MESSAGE%
+> ### %moregradients_colorize_YOUR MESSAGE% (🔰 Since 0.2-BETA)
 > :warning: **This was made in case your placeholder doesn't return colors parsed.**\
 > Returned value is ready to be used wherever you want.\
 > **Example:** %moregradients_colorize_&eI am &6&l{player_name}%<br>
