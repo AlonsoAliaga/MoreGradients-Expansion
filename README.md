@@ -3,7 +3,7 @@ This is a [PlaceholderAPI](https://links.alonsoaliaga.com/PlaceholderAPI) expans
 
 # Installation
 You can install this expansion in 2 ways:
-### 1) PlaceholderAPI eCloud (Pending to be approved✔️)
+### 1) PlaceholderAPI eCloud (Available ✔️)
 While being in console or having OP run the following commands:
 > /papi ecloud download moregradients\
 > /papi reload
@@ -86,6 +86,13 @@ The following placeholders are available:
 > 
 > **Example:** %moregradients_custom_raw_no_parsed_instagram_I am {player_name}%<br>
 > **Output:** `&#833ab4I&#9236a1 &#a2338ea&#b12f7bm&#c02c69 &#cf2856A&#df2443l&#ee2130o&#fd1d1dn&#fd2f22s&#fd4227o&#fd542cA&#fd6731l&#fc7936i&#fc8b3ba&#fc9e40g&#fcb045a`
+
+## Utils
+> ### %moregradients_colorize_YOUR MESSAGE%
+> :warning: **This was made in case your placeholder doesn't return colors parsed.**\
+> Returned value is ready to be used wherever you want.\
+> **Example:** %moregradients_colorize_&eI am &6&l{player_name}%<br>
+> **Output:** `§eI am §6§lAlonsoAliaga`
 
 # Want more gradients?
 **Make sure to check our [BRAND NEW TOOL](https://alonsoaliaga.com/hex) to generate your own text with gradients!**<br>
