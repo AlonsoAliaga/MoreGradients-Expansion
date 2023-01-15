@@ -6,7 +6,6 @@ import org.bukkit.ChatColor;
 
 import javax.annotation.Nonnull;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,6 +15,8 @@ public class ChatUtils {
     private static final Pattern ALL_FORMATS_PATTERN = Pattern.compile("(&#§x[a-f0-9]{6}|(§[a-f0-9]){6}|[&§][a-f0-9klmnor]|)",Pattern.CASE_INSENSITIVE);
     private static final Pattern PARSED_COLORS_PATTERN = Pattern.compile("§[a-f0-9klmnor]",Pattern.CASE_INSENSITIVE);
     private static final Pattern PARSED_HEX_PATTERN = Pattern.compile("§x(§[a-f0-9]){6}",Pattern.CASE_INSENSITIVE);
+    private static final Pattern ALL_FORMATS_PATTERN_TO_PARSE = Pattern.compile("(&?#[a-f0-9]{6}|&[a-f0-9klmnor])",Pattern.CASE_INSENSITIVE);
+    private static final Pattern HEX_FORMAT_TO_PARSE = Pattern.compile("(&?#[a-f0-9]{6})",Pattern.CASE_INSENSITIVE);
     public static String applyColor(String text, List<Color> colors, String modifierString) {
         if(colors.size() == 1) {
             return colorToParsedHex(colors.get(0)) + text;
@@ -48,6 +49,14 @@ public class ChatUtils {
             string = string.replace(match,"&#"+match.substring(2).replace("§",""));
         }
         return string;
+    }
+    public static String parseAllFormatting(@Nonnull String string) {
+        Matcher matcher = HEX_FORMAT_TO_PARSE.matcher(string);
+        while(matcher.find()) {
+            String match = matcher.group(0);
+            string = string.replace(match,hexToParsedHex(match));
+        }
+        return ChatColor.translateAlternateColorCodes('&',string);
     }
     public static String revertFormatting(@Nonnull String string) {
         return revertParsedColors(revertParsedHex(string));
@@ -126,5 +135,16 @@ public class ChatUtils {
             result.append("§").append(c);
         }
         return result.toString();
+    }
+    private static String hexToParsedHex(String hex) {
+        if(hex.length() >= 7) {
+            StringBuilder result = new StringBuilder("§x");
+            hex = hex.substring(hex.length() - 6);
+            for (char c : hex.toCharArray()) {
+                result.append("§").append(c);
+            }
+            return result.toString();
+        }
+        return hex;
     }
 }

@@ -19,6 +19,10 @@ public class MoreGradientsExpansion extends PlaceholderExpansion implements Conf
     private final String hexFormat;
     private final HashMap<String,FormatData> formats = new HashMap<>();
     public MoreGradientsExpansion() {
+        boolean debug = false;
+        try{
+            debug = getPlaceholderAPI().getPlaceholderAPIConfig().isDebugMode();
+        }catch (Throwable ignored) {}
         hexFormat = getString("default-hex-format","&#<hex-color>");
         ConfigurationSection formatsSection = getConfigSection("formats");
         if(formatsSection != null) {
@@ -41,6 +45,7 @@ public class MoreGradientsExpansion extends PlaceholderExpansion implements Conf
                     else {
                         String modifierString = formatsSection.getString(formatIdentifier+".modifier","");
                         formats.put(formatIdentifier.toLowerCase(Locale.ROOT),new FormatData(colors,modifierString));
+                        if(debug) Bukkit.getConsoleSender().sendMessage("[MoreGradient-Expansion] Successfully loaded '"+formatIdentifier+"' format: "+colorsString+"|"+modifierString);
                     }
                 }
             }
@@ -109,11 +114,14 @@ public class MoreGradientsExpansion extends PlaceholderExpansion implements Conf
         if(params.startsWith("custom_")) {// custom_#rrggbb-#rrggbb-#rrggbb_This is a message!
             return processCustom(p, params.substring(7));//
         }
+        if(params.startsWith("colorize_")) {// colorize_&6This is a message with #rrggbbHEX colors&6!
+            return processColorize(p, params.substring(9));//
+        }
         return null;
     }
     @Override
     public Map<String, Object> getDefaults() {
-        final Map<String, Object> defaults = new HashMap<>();
+        final Map<String, Object> defaults = new LinkedHashMap<>();
         defaults.put("default-hex-format","&#<hex-color>");
         defaults.put("formats.rainbow.colors","#FF0000-#FF7F00-#FFFF00-#00FF00-#0000FF-#4B0082-#9400D3");
         defaults.put("formats.rainbow.modifier","");
@@ -137,7 +145,7 @@ public class MoreGradientsExpansion extends PlaceholderExpansion implements Conf
     }
     @Override
     public @NotNull String getVersion() {
-        return "0.1-BETA";
+        return "0.2-BETA";
     }
     @Override
     public boolean persist() {
@@ -161,6 +169,10 @@ public class MoreGradientsExpansion extends PlaceholderExpansion implements Conf
             }else{
                 colors = new ArrayList<>();
                 for (String colorString : colorPart.split("-")) {
+                    if(colorString.startsWith("modifier=")) {
+                        modifierString = colorString.substring(9);
+                        continue;
+                    }
                     try{
                         colors.add(new Color(Integer.parseInt(colorString.substring(1), 16)));
                     }catch (Throwable ignored) {}
@@ -191,6 +203,10 @@ public class MoreGradientsExpansion extends PlaceholderExpansion implements Conf
             }else{
                 colors = new ArrayList<>();
                 for (String colorString : colorPart.split("-")) {
+                    if(colorString.startsWith("modifier=")) {
+                        modifierString = colorString.substring(9);
+                        continue;
+                    }
                     try{
                         colors.add(new Color(Integer.parseInt(colorString.substring(1), 16)));
                     }catch (Throwable ignored) {}
@@ -221,6 +237,10 @@ public class MoreGradientsExpansion extends PlaceholderExpansion implements Conf
             }else{
                 colors = new ArrayList<>();
                 for (String colorString : colorPart.split("-")) {
+                    if(colorString.startsWith("modifier=")) {
+                        modifierString = colorString.substring(9);
+                        continue;
+                    }
                     try{
                         colors.add(new Color(Integer.parseInt(colorString.substring(1), 16)));
                     }catch (Throwable ignored) {}
@@ -251,6 +271,10 @@ public class MoreGradientsExpansion extends PlaceholderExpansion implements Conf
             }else{
                 colors = new ArrayList<>();
                 for (String colorString : colorPart.split("-")) {
+                    if(colorString.startsWith("modifier=")) {
+                        modifierString = colorString.substring(9);
+                        continue;
+                    }
                     try{
                         colors.add(new Color(Integer.parseInt(colorString.substring(1), 16)));
                     }catch (Throwable ignored) {}
@@ -259,5 +283,8 @@ public class MoreGradientsExpansion extends PlaceholderExpansion implements Conf
             return ChatUtils.applyColorNoConversion(ChatUtils.removeFormatting(PlaceholderAPI.setBracketPlaceholders(player,value)),colors,format,modifierString);
         }
         return "§cInvalid format!";
+    }
+    private String processColorize(Player player, String value) {
+        return ChatUtils.parseAllFormatting(PlaceholderAPI.setBracketPlaceholders(player,value));
     }
 }
