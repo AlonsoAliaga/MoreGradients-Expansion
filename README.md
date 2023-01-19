@@ -94,14 +94,33 @@ The following placeholders are available:
 > **Example:** %moregradients_colorize_&eI am &6&l{player_name}%<br>
 > **Output:** `§eI am §6§lAlonsoAliaga`
 
-# Want more gradients?
+# Want more cool and useful expansions?
+<p align="center">
+    <a href="https://alonsoaliaga.com/capitalize">Capitalize Expansion</a><br>
+    Customize texts a bit more removing underscores, dashes and capitalizing letters!<br>
+    <br>
+    <a href="https://alonsoaliaga.com/checkmoney">CheckMoney Expansion</a><br>
+    Check if player has enough funds or not with custom output! (Specially for menu plugins)<br>
+    <br>
+    <a href="https://alonsoaliaga.com/checkdate">CheckDate Expansion</a><br>
+    Check if server/machine date is the desired one with custom output! (Specially for messages)<br>
+</p>
+
+# Want more tools?
 **Make sure to check our [BRAND NEW TOOL](https://alonsoaliaga.com/hex) to generate your own text with gradients!**<br>
 <p align="center">
     <a href="https://alonsoaliaga.com/hex"><img src="https://i.imgur.com/766Es8I.png" alt="Our brand new tool!"/></a>
 </p>
 
+# Do you have a cool expansion idea?
+<p align="center">
+    <a href="https://alonsoaliaga.com/discord">Join us on Discord</a><br>
+    <a href="https://alonsoaliaga.com/discord"><img src="https://i.imgur.com/2pslxIN.png"></a><br>
+    Let us know what's your idea and it might become true!
+</p>
+
 # Questions?
 <p align="center">
-    <a href="https://alonsoaliaga.com/discord"><img style="width:200px;" src="https://alonsoaliaga.github.io/assets/img/AlonsoAliaga_logo_animated.gif"></a><br>
-    <a href="https://alonsoaliaga.com/discord"><span style="font-size:25px;font-weight:bold;color:rgb(100,100,255);">Join us in our discord!</span></a>
+    <a href="https://alonsoaliaga.com/discord"><img style="width:200px;" src="https://i.imgur.com/laEFHcG.gif"></a><br>
+    <a href="https://alonsoaliaga.com/discord"><span style="font-size:28px;font-weight:bold;color:rgb(100,100,255);">Join us in our discord!</span></a>
 </p>
