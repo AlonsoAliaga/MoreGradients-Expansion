@@ -14,8 +14,10 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class MoreGradientsExpansion extends PlaceholderExpansion implements Configurable, Cacheable {
+    private final Pattern splitPattern = Pattern.compile("_(?=[^\\}]*(?:\\{|$))");
     private final String hexFormat;
     private final HashMap<String,FormatData> formats = new HashMap<>();
     public MoreGradientsExpansion() {
@@ -117,6 +119,12 @@ public class MoreGradientsExpansion extends PlaceholderExpansion implements Conf
         if(params.startsWith("colorize_")) {// colorize_&6This is a message with #rrggbbHEX colors&6!
             return processColorize(p, params.substring(9));//
         }
+        if(params.startsWith("revertformatting_")) {// revertformatting_&6This is a message with #rrggbbHEX colors&6!
+            return ChatUtils.revertFormatting(PlaceholderAPI.setBracketPlaceholders(p,params.substring(17)));
+        }
+        if(params.startsWith("removeformatting_")) {// removeformatting_&6This is a message with #rrggbbHEX colors&6!
+            return ChatUtils.removeFormatting(PlaceholderAPI.setBracketPlaceholders(p,params.substring(17)));
+        }
         return null;
     }
     @Override
@@ -157,9 +165,10 @@ public class MoreGradientsExpansion extends PlaceholderExpansion implements Conf
     }
     private String processCustom(Player player, String value) { // #rrggbb-#rrggbb-#rrggbb_This is a message!
         if(value.isEmpty()) return value;//
-        String[] parts = value.split("_");
+        String[] parts = splitPattern.split(value);
         if(parts.length >= 2) {
-            String colorPart = parts[0].toLowerCase(Locale.ROOT);
+            String parsed = PlaceholderAPI.setBracketPlaceholders(player,parts[0]);
+            String colorPart = parsed.toLowerCase(Locale.ROOT);
             value = value.substring(colorPart.length() + 1);
             String modifierString = "";
             List<Color> colors;
@@ -184,9 +193,10 @@ public class MoreGradientsExpansion extends PlaceholderExpansion implements Conf
     }
     private String processCustomRawNoParsed(Player player, String value) { // #rrggbb-#rrggbb-#rrggbb_&#<hex-color>_This is a message!
         if(value.isEmpty()) return value;//
-        String[] parts = value.split("_");
+        String[] parts = splitPattern.split(value);
         if(parts.length >= 2) {
-            String colorPart = parts[0].toLowerCase(Locale.ROOT);
+            String parsed = PlaceholderAPI.setBracketPlaceholders(player,parts[0]);
+            String colorPart = parsed.toLowerCase(Locale.ROOT);
             String format = hexFormat;
             if(parts.length >= 3) {
                 String optionalFormat = parts[1];
@@ -218,9 +228,10 @@ public class MoreGradientsExpansion extends PlaceholderExpansion implements Conf
     }
     private String processCustomRaw(Player player, String value) { // #rrggbb-#rrggbb-#rrggbb_This is a message!
         if(value.isEmpty()) return value;//
-        String[] parts = value.split("_");
+        String[] parts = splitPattern.split(value);
         if(parts.length >= 2) {
-            String colorPart = parts[0].toLowerCase(Locale.ROOT);
+            String parsed = PlaceholderAPI.setBracketPlaceholders(player,parts[0]);
+            String colorPart = parsed.toLowerCase(Locale.ROOT);
             String format = hexFormat;
             if(parts.length >= 3) {
                 String optionalFormat = parts[1];
@@ -252,9 +263,10 @@ public class MoreGradientsExpansion extends PlaceholderExpansion implements Conf
     }
     private String processCustomNoParsed(Player player, String value) { // #rrggbb-#rrggbb-#rrggbb_&#<hex-color>_This is a message!
         if(value.isEmpty()) return value;//
-        String[] parts = value.split("_");
+        String[] parts = splitPattern.split(value);
         if(parts.length >= 2) {
-            String colorPart = parts[0].toLowerCase(Locale.ROOT);
+            String parsed = PlaceholderAPI.setBracketPlaceholders(player,parts[0]);
+            String colorPart = parsed.toLowerCase(Locale.ROOT);
             String format = hexFormat;
             if(parts.length >= 3) {
                 String optionalFormat = parts[1];

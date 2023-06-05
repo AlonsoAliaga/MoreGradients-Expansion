@@ -12,7 +12,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class ChatUtils {
-    private static final Pattern ALL_FORMATS_PATTERN = Pattern.compile("(&#§x[a-f0-9]{6}|(§[a-f0-9]){6}|[&§][a-f0-9klmnor]|)",Pattern.CASE_INSENSITIVE);
+    private static final Pattern ALL_FORMATS_PATTERN = Pattern.compile("(&#§x[a-f0-9]{6}|(§[a-f0-9]){6}|[&§][a-f0-9klmnor])",Pattern.CASE_INSENSITIVE);
+    private static final Pattern ALL_FORMATS_PATTERN_IMPROVED = Pattern.compile("(&?#[a-f0-9]{6}|[&§][a-f0-9klmnorx])",Pattern.CASE_INSENSITIVE);
     private static final Pattern PARSED_COLORS_PATTERN = Pattern.compile("§[a-f0-9klmnor]",Pattern.CASE_INSENSITIVE);
     private static final Pattern PARSED_HEX_PATTERN = Pattern.compile("§x(§[a-f0-9]){6}",Pattern.CASE_INSENSITIVE);
     private static final Pattern ALL_FORMATS_PATTERN_TO_PARSE = Pattern.compile("(&?#[a-f0-9]{6}|&[a-f0-9klmnor])",Pattern.CASE_INSENSITIVE);
@@ -65,7 +66,7 @@ public class ChatUtils {
         return revertParsedColors(revertParsedHex(string,hexFormat));
     }
     public static String removeFormatting(@Nonnull String string) {
-        Matcher matcher = ALL_FORMATS_PATTERN.matcher(string);
+        Matcher matcher = ALL_FORMATS_PATTERN_IMPROVED.matcher(string);
         while(matcher.find()) {
             String match = matcher.group(0);
             string = string.replace(match,"");

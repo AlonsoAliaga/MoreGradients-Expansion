@@ -94,8 +94,28 @@ The following placeholders are available:
 > **Example:** %moregradients_colorize_&eI am &6&l{player_name}%<br>
 > **Output:** `§eI am §6§lAlonsoAliaga`
 
+> ### %moregradients_removeformatting_YOUR MESSAGE% (🔰 Since 0.3-BETA)
+> :warning: **This was made in case your want to remove all parsed format.**\
+> Returned value is ready to be used wherever you want. Supports HEX colors.\
+> **Example:** %moregradients_removeformatting_§eWelcome {vault_prefix} &6{player_name}&e!%<br>
+> Instead of returning something like: `§eWelcome §b[MVP§c+§b] §6AlonsoAliaga§e!`<br>
+> **Output will be:** `&eWelcome &b[MVP&c+&b] &6AlonsoAliaga&e!`
+
+> ### %moregradients_revertformatting_YOUR MESSAGE% (🔰 Since 0.3-BETA)
+> :warning: **This was made in case your want to revert all parsed format.**\
+> Returned value is ready to be used wherever you want. Supports HEX colors.\
+> **Example:** %moregradients_revertformatting_&eWelcome {vault_prefix} &6{player_name}&e!%<br>
+> Instead of returning something like: `§eWelcome §b[MVP§c+§b] §6AlonsoAliaga§e!`<br>
+> **Output will be:** `Welcome [MVP+] AlonsoAliaga!`
+
 # Want more cool and useful expansions?
 <p align="center">
+    <a href="https://alonsoaliaga.com/translatefont">TranslateFont Expansion</a><br>
+    Translate your text and make them look fancy! ᴍᴀɴʏ ғᴏɴᴛs ᴀᴠᴀɪʟᴀʙʟᴇ!<br>
+    <br>
+    <a href="https://alonsoaliaga.com/tempdata">TempData Expansion</a><br>
+    Store in cache temporary global or per player data to use where you need!<br>
+    <br>
     <a href="https://alonsoaliaga.com/capitalize">Capitalize Expansion</a><br>
     Customize texts a bit more removing underscores, dashes and capitalizing letters!<br>
     <br>
