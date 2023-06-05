@@ -2,6 +2,6 @@
 *.jar
 /target/
 /out/
+/.idea/
 .idea
-*.xml
 *.iml
