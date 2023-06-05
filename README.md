@@ -99,14 +99,14 @@ The following placeholders are available:
 > Returned value is ready to be used wherever you want. Supports HEX colors.\
 > **Example:** %moregradients_removeformatting_§eWelcome {vault_prefix} &6{player_name}&e!%<br>
 > Instead of returning something like: `§eWelcome §b[MVP§c+§b] §6AlonsoAliaga§e!`<br>
-> **Output will be:** `&eWelcome &b[MVP&c+&b] &6AlonsoAliaga&e!`
+> **Output will be:** `Welcome [MVP+] AlonsoAliaga!`
 
 > ### %moregradients_revertformatting_YOUR MESSAGE% (🔰 Since 0.3-BETA)
 > :warning: **This was made in case your want to revert all parsed format.**\
 > Returned value is ready to be used wherever you want. Supports HEX colors.\
 > **Example:** %moregradients_revertformatting_&eWelcome {vault_prefix} &6{player_name}&e!%<br>
 > Instead of returning something like: `§eWelcome §b[MVP§c+§b] §6AlonsoAliaga§e!`<br>
-> **Output will be:** `Welcome [MVP+] AlonsoAliaga!`
+> **Output will be:** `&eWelcome &b[MVP&c+&b] &6AlonsoAliaga&e!`
 
 # Want more cool and useful expansions?
 <p align="center">
