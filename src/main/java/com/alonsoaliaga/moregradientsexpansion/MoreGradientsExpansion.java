@@ -153,7 +153,7 @@ public class MoreGradientsExpansion extends PlaceholderExpansion implements Conf
     }
     @Override
     public @NotNull String getVersion() {
-        return "0.2-BETA";
+        return "0.3-BETA";
     }
     @Override
     public boolean persist() {
